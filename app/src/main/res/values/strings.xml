@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CarFilter</string>
+    <string name="no_filters_selected_comment">No filters selected</string>
+    <string name="open_filter_button">OPEN FILTER</string>
 </resources>

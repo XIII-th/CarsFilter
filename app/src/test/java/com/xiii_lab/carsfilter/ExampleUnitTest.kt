@@ -1,4 +1,4 @@
-package com.xiii_lab.carfilter
+package com.xiii_lab.carsfilter
 
 import org.junit.Test
 
