@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.xiii_lab.carsfilter.manufacturer.R
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by XIII-th on 24.04.2022
  */
+@AndroidEntryPoint
 class ManufacturerFragment : Fragment() {
 
     private val viewModel: ManufacturerViewModel by viewModels()

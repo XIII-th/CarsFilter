@@ -15,7 +15,7 @@ import com.xiii_lab.carsfilter.databinding.SummaryFragmentBinding
  */
 internal class SummaryFragment : Fragment() {
 
-    private val vm: SummaryViewModelApi by viewModels<SummaryViewModel>()
+    private val vm: SummaryViewModel by viewModels<SummaryViewModelImpl>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

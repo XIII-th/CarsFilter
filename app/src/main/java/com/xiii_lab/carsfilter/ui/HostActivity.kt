@@ -1,4 +1,4 @@
-package com.xiii_lab.carsfilter
+package com.xiii_lab.carsfilter.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.xiii_lab.carsfilter.R
 import com.xiii_lab.carsfilter.databinding.HostActivityBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by XIII-th on 24.04.2022
  */
+@AndroidEntryPoint
 class HostActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

@@ -3,6 +3,7 @@
     package="com.xiii_lab.carsfilter">
 
     <application
+        android:name=".CarsFilterApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +12,7 @@
         android:theme="@style/Theme.CarFilter">
 
         <activity
-            android:name=".HostActivity"
+            android:name=".ui.HostActivity"
             android:exported="true"
             android:theme="@style/Theme.CarFilter.NoActionBar">
             <intent-filter>
