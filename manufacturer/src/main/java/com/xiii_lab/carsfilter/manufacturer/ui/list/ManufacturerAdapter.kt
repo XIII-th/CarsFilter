@@ -3,7 +3,7 @@ package com.xiii_lab.carsfilter.manufacturer.ui.list
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import com.xiii_lab.carsfilter.design.items.SingleLineViewHolder
-import com.xiii_lab.carsfilter.manufacturer.data.Manufacturer
+import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 
 /**
  * Created by XIII-th on 25.04.2022

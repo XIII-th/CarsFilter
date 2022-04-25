@@ -17,11 +17,22 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            buildConfigField 'String', 'BASE_URL', BASE_URL
+            buildConfigField 'String', 'API_KEY', API_KEY
+            buildConfigField 'String', 'API_KEY_VALUE', API_VALUE
+        }
+
         release {
+            buildConfigField 'String', 'BASE_URL', BASE_URL
+            buildConfigField 'String', 'API_KEY', API_KEY
+            buildConfigField 'String', 'API_VALUE', API_VALUE
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -29,27 +40,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    implementation project(':design')
-    implementation project(':remote')
-
-    implementation 'com.google.android.material:material:1.5.0'
 
     // DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
-    // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    // Paging
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
