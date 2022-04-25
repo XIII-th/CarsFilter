@@ -1,0 +1,36 @@
+package com.xiii_lab.carsfilter.manufacturer.data
+
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
+import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
+import com.xiii_lab.carsfilter.remote.manufacturer.ManufacturersRemoteDataSource
+import javax.inject.Inject
+
+/**
+ * Created by XIII-th on 25.04.2022
+ */
+internal class ManufacturerPagingSource @Inject constructor(
+    private val manufacturersRemoteDataSource: ManufacturersRemoteDataSource
+) : PagingSource<Int, Manufacturer>() {
+
+    override fun getRefreshKey(state: PagingState<Int, Manufacturer>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Manufacturer> {
+        try {
+            val nextPageNumber = params.key ?: 0
+            val response = manufacturersRemoteDataSource.getManufacturers(nextPageNumber)
+            return LoadResult.Page(
+                data = response.manufacturers,
+                prevKey = if (nextPageNumber == 0) null else nextPageNumber - 1,
+                nextKey = if (nextPageNumber == response.totalPageCount) null else nextPageNumber + 1
+            )
+        } catch (e: Exception) {
+            TODO("Handle exceptions")
+        }
+    }
+}
