@@ -1,7 +1,7 @@
 package com.xiii_lab.carsfilter.manufacturer.di
 
-import com.xiii_lab.carsfilter.manufacturer.data.ManufacturerRepository
-import com.xiii_lab.carsfilter.manufacturer.data.ManufacturerRepositoryImpl
+import com.xiii_lab.carsfilter.manufacturer.data.ManufacturersRepository
+import com.xiii_lab.carsfilter.manufacturer.data.ManufacturersRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,5 +15,5 @@ import dagger.hilt.android.components.ViewModelComponent
 internal interface ManufacturerModule {
 
     @Binds
-    fun bindManufacturerRepository(impl: ManufacturerRepositoryImpl): ManufacturerRepository
+    fun bindManufacturerRepository(impl: ManufacturersRepositoryImpl): ManufacturersRepository
 }

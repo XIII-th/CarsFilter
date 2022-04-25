@@ -18,6 +18,6 @@
         android:id="@+id/nav_manufacturer"
         android:name="com.xiii_lab.carsfilter.manufacturer.ui.ManufacturerFragment"
         android:label="ManufacturerFragment"
-        tools:layout="@layout/manufacturer_fragment" />
+        tools:layout="@layout/list_fragment" />
 
 </navigation>
