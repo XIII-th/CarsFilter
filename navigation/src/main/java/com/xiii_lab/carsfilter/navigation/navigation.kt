@@ -14,3 +14,10 @@ fun NavController.openMainTypeSelection(manufacturerId: String) =
     navigate(R.id.nav_main_types, Bundle().apply {
         putString(MANUFACTURER_ID_ARG, manufacturerId)
     })
+
+const val MAIN_TYPE_ID_ARG = "MAIN_TYPE_ID_ARG"
+fun NavController.openBuildDateSelection(manufacturerId: String, mainTypeId: String) =
+    navigate(R.id.nav_build_dates, Bundle().apply {
+        putString(MANUFACTURER_ID_ARG, manufacturerId)
+        putString(MAIN_TYPE_ID_ARG, mainTypeId)
+    })

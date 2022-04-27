@@ -21,9 +21,11 @@ internal class MainTypesViewModelImpl @Inject constructor(
 ) : ViewModel(), MainTypesViewModel {
 
     // TODO: Handle absences of id
-    override val mainTypes = mainTypesRepository.getMainTypes(stateHandle[MANUFACTURER_ID_ARG]!!)
+    private val manufacturerId: String = stateHandle[MANUFACTURER_ID_ARG]!!
 
-    override val selectedMainType = MutableSharedFlow<MainType>()
+    override val mainTypes = mainTypesRepository.getMainTypes(manufacturerId)
+
+    override val selectedMainType = MutableSharedFlow<Pair<String, String>>()
 
     override fun onNewSearchQuery(string: String) {
         TODO("Not yet implemented")
@@ -31,7 +33,7 @@ internal class MainTypesViewModelImpl @Inject constructor(
 
     override fun onSelected(mainType: MainType) {
         viewModelScope.launch {
-            selectedMainType.emit(mainType)
+            selectedMainType.emit(manufacturerId to mainType.id)
         }
     }
 }

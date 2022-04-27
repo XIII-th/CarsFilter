@@ -41,6 +41,7 @@ dependencies {
     implementation project(':navigation')
     implementation project(':manufacturer')
     implementation project(':maintypes')
+    implementation project(':builddtates')
 
     // DI
     implementation "com.google.dagger:hilt-android:$hilt_version"

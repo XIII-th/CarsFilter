@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
 import com.xiii_lab.carsfilter.maintypes.ui.list.MainTypeAdapter
-import com.xiii_lab.carsfilter.navigation.openMainTypeSelection
+import com.xiii_lab.carsfilter.navigation.openBuildDateSelection
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -34,8 +34,8 @@ internal class MainTypesFragment : Fragment() {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.selectedMainType.collect { manufacturer ->
-                findNavController().openMainTypeSelection(manufacturer.id)
+            viewModel.selectedMainType.collect { (manufacturerId, mainTypeId) ->
+                findNavController().openBuildDateSelection(manufacturerId, mainTypeId)
             }
         }
     }.root

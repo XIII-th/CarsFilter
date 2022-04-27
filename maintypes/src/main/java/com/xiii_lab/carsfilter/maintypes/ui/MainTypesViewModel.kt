@@ -11,7 +11,8 @@ internal interface MainTypesViewModel {
 
     val mainTypes: Flow<PagingData<MainType>>
 
-    val selectedMainType: Flow<MainType>
+    // TODO: Documentation
+    val selectedMainType: Flow<Pair<String, String>>
 
     fun onNewSearchQuery(string: String)
 

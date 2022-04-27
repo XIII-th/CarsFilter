@@ -4,5 +4,6 @@
     <item name="nav_summary" type="id"/>
     <item name="nav_manufacturer" type="id"/>
     <item name="nav_main_types" type="id"/>
+    <item name="nav_build_dates" type="id"/>
 
 </resources>
