@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.builddtates.ui.list.BuildDatesAdapter
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
+import com.xiii_lab.carsfilter.navigation.openSummary
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -32,8 +34,8 @@ class BuildDateFragment : Fragment() {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.selectedBuildDate.collect { buildDate ->
-                TODO("Implement navigation to summary")
+            viewModel.selectedBuildDate.collect { (manufacturerId, mainTypeId, buildDateId) ->
+                findNavController().openSummary(manufacturerId, mainTypeId, buildDateId)
             }
         }
     }.root

@@ -10,7 +10,8 @@ internal interface BuildDateViewModel {
 
     val buildDates: Flow<List<BuildDate>>
 
-    val selectedBuildDate: Flow<BuildDate>
+    // TODO: Documentation
+    val selectedBuildDate: Flow<Triple<String, String, String>>
 
     fun onSelected(buildDate: BuildDate)
 }

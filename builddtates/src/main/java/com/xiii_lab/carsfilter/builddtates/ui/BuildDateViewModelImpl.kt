@@ -22,16 +22,16 @@ internal class BuildDateViewModelImpl @Inject constructor(
 ) : ViewModel(), BuildDateViewModel {
 
     // TODO: Handle absences of id
-    override val buildDates = buildDatesRepository.getBuildDates(
-        stateHandle[MANUFACTURER_ID_ARG]!!,
-        stateHandle[MAIN_TYPE_ID_ARG]!!
-    )
+    private val manufacturerId: String = stateHandle[MANUFACTURER_ID_ARG]!!
+    private val mainTypeId: String = stateHandle[MAIN_TYPE_ID_ARG]!!
 
-    override val selectedBuildDate = MutableSharedFlow<BuildDate>()
+    override val buildDates = buildDatesRepository.getBuildDates(manufacturerId, mainTypeId)
+
+    override val selectedBuildDate = MutableSharedFlow<Triple<String, String, String>>()
 
     override fun onSelected(buildDate: BuildDate) {
         viewModelScope.launch {
-            selectedBuildDate.emit(buildDate)
+            selectedBuildDate.emit(Triple(manufacturerId, mainTypeId, buildDate.id))
         }
     }
 }

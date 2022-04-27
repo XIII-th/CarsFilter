@@ -21,3 +21,11 @@ fun NavController.openBuildDateSelection(manufacturerId: String, mainTypeId: Str
         putString(MANUFACTURER_ID_ARG, manufacturerId)
         putString(MAIN_TYPE_ID_ARG, mainTypeId)
     })
+
+const val BUILD_DATE_ID_ARG = "BUILD_DATE_ID_ARG"
+fun NavController.openSummary(manufacturerId: String, mainTypeId: String, buildDateId: String) =
+    navigate(R.id.nav_summary, Bundle().apply {
+        putString(MANUFACTURER_ID_ARG, manufacturerId)
+        putString(MAIN_TYPE_ID_ARG, mainTypeId)
+        putString(BUILD_DATE_ID_ARG, buildDateId)
+    })
