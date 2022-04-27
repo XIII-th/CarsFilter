@@ -1,24 +1,17 @@
 package com.xiii_lab.carsfilter.manufacturer.ui
 
-import androidx.lifecycle.ViewModel
-import androidx.paging.filter
-import com.xiii_lab.carsfilter.manufacturer.data.ManufacturersRepository
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import javax.inject.Inject
+import androidx.paging.PagingData
+import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
+import kotlinx.coroutines.flow.Flow
 
 /**
- * Created by XIII-th on 24.04.2022
+ * Created by XIII-th on 27.04.2022
  */
-@HiltViewModel
-internal class ManufacturerViewModel @Inject constructor(
-    repository: ManufacturersRepository
-) : ViewModel() {
+internal interface ManufacturerViewModel {
 
-    private val queryFlow = MutableStateFlow("")
+    val manufacturers: Flow<PagingData<Manufacturer>>
 
-    val manufacturers = queryFlow.combine(repository.manufacturers) { query, manufacturers ->
-        if (query.isEmpty()) manufacturers else manufacturers.filter { it.name.contains(query) }
-    }
+    val selectedManufacturer: Flow<Manufacturer>
+
+    fun onSelected(manufacturer: Manufacturer)
 }

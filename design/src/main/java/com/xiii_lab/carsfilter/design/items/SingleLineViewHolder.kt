@@ -10,20 +10,31 @@ import com.xiii_lab.carsfilter.design.databinding.OddItemBinding
 /**
  * Created by XIII-th on 25.04.2022
  */
-class SingleLineViewHolder private constructor(
-    private val textView: TextView
+class SingleLineViewHolder<in T> private constructor(
+    private val textView: TextView,
+    private val onSelected: (T) -> Unit
 ) : RecyclerView.ViewHolder(textView) {
 
-    constructor(parent: ViewGroup, isOdd: Boolean) : this(
+    private var data: T? = null
+
+    init {
+        textView.setOnClickListener {
+            data?.let(onSelected)
+        }
+    }
+
+    constructor(parent: ViewGroup, isOdd: Boolean, onSelected: (T) -> Unit) : this(
         LayoutInflater.from(parent.context).let { inflater ->
             if (isOdd)
                 OddItemBinding.inflate(inflater, parent, false).name
             else
                 EvenItemBinding.inflate(inflater, parent, false).name
-        }
+        },
+        onSelected
     )
 
-    fun bind(title: String?) {
+    fun bind(title: String?, item: T?) {
         textView.text = title
+        data = item
     }
 }

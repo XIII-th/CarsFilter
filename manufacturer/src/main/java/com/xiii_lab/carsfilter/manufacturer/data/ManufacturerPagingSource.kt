@@ -22,12 +22,11 @@ internal class ManufacturerPagingSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Manufacturer> {
         try {
-            val nextPageNumber = params.key ?: 0
-            val response = manufacturersRemoteDataSource.getManufacturers(nextPageNumber)
+            val response = manufacturersRemoteDataSource.getManufacturers(params.key ?: 0)
             return LoadResult.Page(
                 data = response.manufacturers,
-                prevKey = if (nextPageNumber == 0) null else nextPageNumber - 1,
-                nextKey = if (nextPageNumber == response.totalPageCount) null else nextPageNumber + 1
+                prevKey = if (response.page == 0) null else response.page - 1,
+                nextKey = if (response.page == response.totalPageCount) null else response.page + 1
             )
         } catch (e: Exception) {
             TODO("Handle exceptions")

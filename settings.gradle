@@ -15,5 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "CarFilter"
 include ':app'
 include ':design'
+include ':navigation'
 include ':remote'
 include ':manufacturer'

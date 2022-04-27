@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.databinding.EmptySummaryFragmentBinding
 import com.xiii_lab.carsfilter.databinding.SummaryFragmentBinding
+import com.xiii_lab.carsfilter.navigation.openManufacturersSelection
 
 /**
  * Created by XIII-th on 24.04.2022
@@ -22,14 +23,14 @@ internal class SummaryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val navController = findNavController()
         val binding = if (vm.isDataSelected)
             SummaryFragmentBinding.inflate(inflater, container, false)
         else
             EmptySummaryFragmentBinding.inflate(inflater, container, false).apply {
-                openFilter.setOnClickListener { navController.navigate(SummaryFragmentDirections.actionOpenFilter()) }
+                openFilter.setOnClickListener {
+                    findNavController().openManufacturersSelection()
+                }
             }
-
         return binding.root
     }
 }

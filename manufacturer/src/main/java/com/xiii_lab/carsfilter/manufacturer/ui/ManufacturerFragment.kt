@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
 import com.xiii_lab.carsfilter.manufacturer.ui.list.ManufacturerAdapter
+import com.xiii_lab.carsfilter.navigation.openMainTypeSelection
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -18,18 +20,23 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class ManufacturerFragment : Fragment() {
 
-    private val viewModel: ManufacturerViewModel by viewModels()
+    private val viewModel: ManufacturerViewModel by viewModels<ManufacturerViewModelImpl>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = ListFragmentBinding.inflate(inflater, container, false).apply {
-        val adapter = ManufacturerAdapter()
+        val adapter = ManufacturerAdapter(viewModel::onSelected)
         list.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.manufacturers.collect { manufacturers ->
                 adapter.submitData(manufacturers)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.selectedManufacturer.collect { manufacturer ->
+                findNavController().openMainTypeSelection(manufacturer.id)
             }
         }
     }.root
