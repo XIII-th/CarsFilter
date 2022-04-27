@@ -6,18 +6,18 @@
     android:padding="@dimen/screen_padding">
 
     <TextView
-        android:id="@+id/no_data_comment"
+        android:id="@+id/noDataComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_filters_selected_comment"
-        app:layout_constraintBottom_toTopOf="@id/open_filter"
+        app:layout_constraintBottom_toTopOf="@id/openFilter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/open_filter"
+        android:id="@+id/openFilter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/open_filter_button"

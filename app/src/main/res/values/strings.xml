@@ -2,4 +2,6 @@
     <string name="app_name">CarFilter</string>
     <string name="no_filters_selected_comment">No filters selected</string>
     <string name="open_filter_button">OPEN FILTER</string>
+    <string name="main_type">Main type</string>
+    <string name="build_date">Build date</string>
 </resources>

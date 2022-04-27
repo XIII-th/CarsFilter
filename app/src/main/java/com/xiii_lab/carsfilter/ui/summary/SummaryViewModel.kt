@@ -6,4 +6,10 @@ package com.xiii_lab.carsfilter.ui.summary
 internal interface SummaryViewModel {
 
     val isDataSelected: Boolean
+
+    val manufacturer: String
+
+    val mainType: String
+
+    val buildDate: String
 }

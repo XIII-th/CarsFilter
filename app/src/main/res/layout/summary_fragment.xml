@@ -1,8 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/screen_padding"
     tools:context=".ui.summary.SummaryFragment">
+
+    <TextView
+        android:id="@+id/manufacturerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/manufacturer_title"
+        android:textAppearance="?textAppearanceOverline"
+        app:layout_constraintBottom_toTopOf="@id/manufacturer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/manufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceHeadline4"
+        app:layout_constraintBottom_toTopOf="@id/mainTypeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/manufacturerLabel"
+        tools:text="Aston martin" />
+
+    <TextView
+        android:id="@+id/mainTypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/summary_vertical_padding"
+        android:text="@string/main_type"
+        android:textAppearance="?textAppearanceOverline"
+        app:layout_constraintBottom_toTopOf="@id/mainType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/manufacturer" />
+
+    <TextView
+        android:id="@+id/mainType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:layout_constraintBottom_toTopOf="@id/buildDateLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainTypeLabel"
+        tools:text="V8 Vintage" />
+
+    <TextView
+        android:id="@+id/buildDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/build_date"
+        android:paddingTop="@dimen/summary_vertical_padding"
+        android:textAppearance="?textAppearanceOverline"
+        app:layout_constraintBottom_toTopOf="@id/buildDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainType"/>
+
+    <TextView
+        android:id="@+id/buildDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:layout_constraintBottom_toTopOf="@id/openFilter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buildDateLabel"
+        tools:text="2014" />
+
+    <Button
+        android:id="@+id/openFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_filter_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

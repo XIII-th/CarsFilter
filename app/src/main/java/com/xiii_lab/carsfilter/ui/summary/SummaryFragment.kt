@@ -18,15 +18,22 @@ import com.xiii_lab.carsfilter.navigation.openManufacturersSelection
  */
 internal class SummaryFragment : Fragment() {
 
-    private val vm: SummaryViewModel by viewModels<SummaryViewModelImpl>()
+    private val viewModel: SummaryViewModel by viewModels<SummaryViewModelImpl>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = if (vm.isDataSelected)
-            SummaryFragmentBinding.inflate(inflater, container, false)
+        val binding = if (viewModel.isDataSelected)
+            SummaryFragmentBinding.inflate(inflater, container, false).apply {
+                manufacturer.text = viewModel.manufacturer
+                mainType.text = viewModel.mainType
+                buildDate.text = viewModel.buildDate
+                openFilter.setOnClickListener {
+                    findNavController().openManufacturersSelection()
+                }
+            }
         else
             EmptySummaryFragmentBinding.inflate(inflater, container, false).apply {
                 openFilter.setOnClickListener {
