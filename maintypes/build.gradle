@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
@@ -9,13 +9,11 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.xiii_lab.carsfilter"
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -39,8 +37,9 @@ android {
 dependencies {
     implementation project(':design')
     implementation project(':navigation')
-    implementation project(':manufacturer')
-    implementation project(':maintypes')
+    implementation project(':remote')
+
+    implementation 'com.google.android.material:material:1.5.0'
 
     // DI
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -49,6 +48,9 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

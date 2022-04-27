@@ -14,10 +14,18 @@
             app:destination="@id/nav_manufacturer" />
     </fragment>
 
+    <!-- TODO extract string resources -->
     <fragment
         android:id="@id/nav_manufacturer"
         android:name="com.xiii_lab.carsfilter.manufacturer.ui.ManufacturerFragment"
-        android:label="ManufacturerFragment"
+        android:label="Manufacturer"
+        tools:layout="@layout/list_fragment" />
+
+    <!-- TODO implement label -->
+    <fragment
+        android:id="@id/nav_main_types"
+        android:name="com.xiii_lab.carsfilter.maintypes.ui.MainTypesFragment"
+        android:label="Main types"
         tools:layout="@layout/list_fragment" />
 
 </navigation>
