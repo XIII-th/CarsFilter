@@ -3,7 +3,6 @@ package com.xiii_lab.carsfilter.manufacturer.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 import com.xiii_lab.carsfilter.remote.manufacturer.ManufacturersRemoteDataSource.Companion.PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

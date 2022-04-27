@@ -1,7 +1,7 @@
 package com.xiii_lab.carsfilter.manufacturer.ui
 
 import androidx.paging.PagingData
-import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
+import com.xiii_lab.carsfilter.manufacturer.data.Manufacturer
 import kotlinx.coroutines.flow.Flow
 
 /**

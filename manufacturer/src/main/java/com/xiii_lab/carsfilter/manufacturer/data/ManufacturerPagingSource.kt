@@ -2,7 +2,6 @@ package com.xiii_lab.carsfilter.manufacturer.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 import com.xiii_lab.carsfilter.remote.manufacturer.ManufacturersRemoteDataSource
 import javax.inject.Inject
 
@@ -24,7 +23,9 @@ internal class ManufacturerPagingSource @Inject constructor(
         try {
             val response = manufacturersRemoteDataSource.getManufacturers(params.key ?: 0)
             return LoadResult.Page(
-                data = response.manufacturers,
+                data = response.manufacturers.entries.map { (id, name) ->
+                    Manufacturer(id, name)
+                },
                 prevKey = if (response.page == 0) null else response.page - 1,
                 nextKey = if (response.page == response.totalPageCount) null else response.page + 1
             )

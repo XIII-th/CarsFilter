@@ -3,7 +3,7 @@ package com.xiii_lab.carsfilter.manufacturer.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xiii_lab.carsfilter.manufacturer.data.ManufacturersRepository
-import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
+import com.xiii_lab.carsfilter.manufacturer.data.Manufacturer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
