@@ -3,36 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_summary">
+    app:startDestination="@+id/nav_summary">
 
     <fragment
-        android:id="@id/nav_summary"
+        android:id="@+id/nav_summary"
         android:name="com.xiii_lab.carsfilter.ui.summary.SummaryFragment"
-        tools:layout="@layout/summary_fragment">
+        tools:layout="@layout/empty_summary_fragment">
         <action
-            android:id="@+id/action_open_filter"
+            android:id="@id/action_select_manufacturer"
             app:destination="@id/nav_manufacturer" />
     </fragment>
 
     <!-- TODO extract string resources -->
     <fragment
-        android:id="@id/nav_manufacturer"
+        android:id="@+id/nav_manufacturer"
         android:name="com.xiii_lab.carsfilter.manufacturer.ui.ManufacturerFragment"
         android:label="Manufacturer"
-        tools:layout="@layout/list_fragment" />
+        tools:layout="@layout/list_fragment">
+        <action
+            android:id="@id/action_select_main_type"
+            app:destination="@id/nav_main_types"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
 
     <!-- TODO implement label -->
     <fragment
-        android:id="@id/nav_main_types"
+        android:id="@+id/nav_main_types"
         android:name="com.xiii_lab.carsfilter.maintypes.ui.MainTypesFragment"
         android:label="Main types"
-        tools:layout="@layout/list_fragment" />
+        tools:layout="@layout/list_fragment">
+        <action
+            android:id="@id/action_select_build_date"
+            app:destination="@id/nav_build_dates" />
+    </fragment>
 
     <!-- TODO implement label -->
     <fragment
-        android:id="@id/nav_build_dates"
+        android:id="@+id/nav_build_dates"
         android:name="com.xiii_lab.carsfilter.builddtates.ui.BuildDateFragment"
         android:label="Build dates"
-        tools:layout="@layout/list_fragment" />
+        tools:layout="@layout/list_fragment">
+        <action
+            android:id="@id/action_show_summary"
+            app:destination="@id/nav_summary"
+            app:popUpTo="@id/nav_summary"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

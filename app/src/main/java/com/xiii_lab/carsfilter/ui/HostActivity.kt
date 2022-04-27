@@ -7,7 +7,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.xiii_lab.carsfilter.R
-import com.xiii_lab.carsfilter.navigation.R as NavR
 import com.xiii_lab.carsfilter.databinding.HostActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +29,7 @@ class HostActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(NavR.id.nav_summary))
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_summary))
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="nav_summary" type="id"/>
-    <item name="nav_manufacturer" type="id"/>
-    <item name="nav_main_types" type="id"/>
-    <item name="nav_build_dates" type="id"/>
+    <item name="action_select_manufacturer" type="id"/>
+    <item name="action_select_main_type" type="id"/>
+    <item name="action_select_build_date" type="id"/>
+    <item name="action_show_summary" type="id"/>
 
 </resources>
