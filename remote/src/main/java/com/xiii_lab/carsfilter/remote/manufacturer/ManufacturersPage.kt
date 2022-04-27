@@ -5,7 +5,6 @@ package com.xiii_lab.carsfilter.remote.manufacturer
  */
 class ManufacturersPage(
     val page: Int,
-    val pageSize: Int,
     val totalPageCount: Int,
     val manufacturers: List<Manufacturer>
 )

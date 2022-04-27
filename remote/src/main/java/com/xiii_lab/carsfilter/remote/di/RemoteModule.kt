@@ -1,6 +1,7 @@
 package com.xiii_lab.carsfilter.remote.di
 
 import com.xiii_lab.carsfilter.remote.BuildConfig
+import com.xiii_lab.carsfilter.remote.maintype.MainTypesRemoteDataSource
 import com.xiii_lab.carsfilter.remote.manufacturer.ManufacturersRemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -45,4 +46,8 @@ internal class RemoteModule {
     @Provides
     fun provideManufacturersDataSource(retrofit: Retrofit) =
         retrofit.create(ManufacturersRemoteDataSource::class.java)
+
+    @Provides
+    fun provideMainTypesDataSource(retrofit: Retrofit) =
+        retrofit.create(MainTypesRemoteDataSource::class.java)
 }
