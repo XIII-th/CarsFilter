@@ -14,34 +14,28 @@
             app:destination="@id/nav_manufacturer" />
     </fragment>
 
-    <!-- TODO extract string resources -->
     <fragment
         android:id="@+id/nav_manufacturer"
         android:name="com.xiii_lab.carsfilter.manufacturer.ui.ManufacturerFragment"
-        android:label="Manufacturer"
+        android:label="@string/manufacturer_title"
         tools:layout="@layout/list_fragment">
         <action
             android:id="@id/action_select_main_type"
-            app:destination="@id/nav_main_types"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:destination="@id/nav_main_types" />
     </fragment>
 
-    <!-- TODO implement label -->
     <fragment
         android:id="@+id/nav_main_types"
         android:name="com.xiii_lab.carsfilter.maintypes.ui.MainTypesFragment"
-        android:label="Main types"
         tools:layout="@layout/list_fragment">
         <action
             android:id="@id/action_select_build_date"
             app:destination="@id/nav_build_dates" />
     </fragment>
 
-    <!-- TODO implement label -->
     <fragment
         android:id="@+id/nav_build_dates"
         android:name="com.xiii_lab.carsfilter.builddtates.ui.BuildDateFragment"
-        android:label="Build dates"
         tools:layout="@layout/list_fragment">
         <action
             android:id="@id/action_show_summary"

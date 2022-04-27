@@ -24,6 +24,8 @@ internal class MainTypesViewModelImpl @Inject constructor(
     // TODO: Handle absences of id
     private val manufacturer: Manufacturer = stateHandle[MANUFACTURER_ARG]!!
 
+    override val toolbarTitle = manufacturer.name
+
     override val mainTypes = mainTypesRepository.getMainTypes(manufacturer.id)
 
     override val selectedMainType = MutableSharedFlow<Pair<Manufacturer, MainType>>()

@@ -27,6 +27,10 @@ internal class BuildDateViewModelImpl @Inject constructor(
     private val manufacturer: Manufacturer = stateHandle[MANUFACTURER_ARG]!!
     private val mainType: MainType = stateHandle[MAIN_TYPE_ARG]!!
 
+    override val toolbarTitle = manufacturer.name
+
+    override val toolbarSubtitle = mainType.name
+
     override val buildDates = buildDatesRepository.getBuildDates(manufacturer.id, mainType.id)
 
     override val selectedBuildDate = MutableSharedFlow<Triple<Manufacturer, MainType, BuildDate>>()

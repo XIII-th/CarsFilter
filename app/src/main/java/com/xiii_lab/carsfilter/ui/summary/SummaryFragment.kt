@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.xiii_lab.carsfilter.R
 import com.xiii_lab.carsfilter.databinding.EmptySummaryFragmentBinding
 import com.xiii_lab.carsfilter.databinding.SummaryFragmentBinding
 import com.xiii_lab.carsfilter.navigation.openManufacturersSelection
@@ -32,5 +34,15 @@ internal class SummaryFragment : Fragment() {
                 }
             }
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        with(requireActivity() as AppCompatActivity) {
+            supportActionBar?.apply {
+                setTitle(R.string.app_name)
+                subtitle = null
+            }
+        }
     }
 }

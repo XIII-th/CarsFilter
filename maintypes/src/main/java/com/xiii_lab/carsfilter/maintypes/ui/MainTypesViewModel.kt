@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.Flow
  */
 internal interface MainTypesViewModel {
 
+    val toolbarTitle: String
+
     val mainTypes: Flow<PagingData<MainType>>
 
     // TODO: Documentation

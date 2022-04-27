@@ -3,6 +3,7 @@ package com.xiii_lab.carsfilter.builddtates.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -39,4 +40,14 @@ class BuildDateFragment : Fragment() {
             }
         }
     }.root
+
+    override fun onStart() {
+        super.onStart()
+        with(requireActivity() as AppCompatActivity) {
+            supportActionBar?.apply {
+                title = viewModel.toolbarTitle
+                subtitle = viewModel.toolbarSubtitle
+            }
+        }
+    }
 }

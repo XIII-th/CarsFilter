@@ -10,6 +10,10 @@ import kotlinx.coroutines.flow.Flow
  */
 internal interface BuildDateViewModel {
 
+    val toolbarTitle: String
+
+    val toolbarSubtitle: String
+
     val buildDates: Flow<List<BuildDate>>
 
     // TODO: Documentation
