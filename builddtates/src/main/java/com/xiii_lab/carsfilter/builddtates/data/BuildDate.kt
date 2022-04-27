@@ -5,5 +5,5 @@ package com.xiii_lab.carsfilter.builddtates.data
  */
 internal data class BuildDate(
     val id: String,
-    val name: String
+    val date: String
 )

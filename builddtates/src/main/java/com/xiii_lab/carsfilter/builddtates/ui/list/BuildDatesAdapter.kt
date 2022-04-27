@@ -18,7 +18,7 @@ internal class BuildDatesAdapter(
 
     override fun onBindViewHolder(holder: SingleLineViewHolder<BuildDate>, position: Int) =
         getItem(position).let { buildDate ->
-            holder.bind(buildDate.name, buildDate)
+            holder.bind(buildDate.date, buildDate)
         }
 
     override fun getItemViewType(position: Int) =
