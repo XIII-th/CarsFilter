@@ -1,7 +1,7 @@
 package com.xiii_lab.carsfilter.maintypes.ui.list
 
 import androidx.recyclerview.widget.DiffUtil
-import com.xiii_lab.carsfilter.maintypes.data.MainType
+import com.xiii_lab.carsfilter.remote.maintype.MainType
 
 /**
  * Created by XIII-th on 27.04.2022

@@ -36,7 +36,7 @@ class ManufacturerFragment : Fragment() {
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.selectedManufacturer.collect { manufacturer ->
-                findNavController().openMainTypeSelection(manufacturer.id)
+                findNavController().openMainTypeSelection(manufacturer)
             }
         }
     }.root

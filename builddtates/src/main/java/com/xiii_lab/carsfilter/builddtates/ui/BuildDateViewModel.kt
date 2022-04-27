@@ -1,6 +1,8 @@
 package com.xiii_lab.carsfilter.builddtates.ui
 
-import com.xiii_lab.carsfilter.builddtates.data.BuildDate
+import com.xiii_lab.carsfilter.remote.builddates.BuildDate
+import com.xiii_lab.carsfilter.remote.maintype.MainType
+import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -11,7 +13,7 @@ internal interface BuildDateViewModel {
     val buildDates: Flow<List<BuildDate>>
 
     // TODO: Documentation
-    val selectedBuildDate: Flow<Triple<String, String, String>>
+    val selectedBuildDate: Flow<Triple<Manufacturer, MainType, BuildDate>>
 
     fun onSelected(buildDate: BuildDate)
 }

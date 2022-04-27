@@ -34,8 +34,8 @@ internal class MainTypesFragment : Fragment() {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.selectedMainType.collect { (manufacturerId, mainTypeId) ->
-                findNavController().openBuildDateSelection(manufacturerId, mainTypeId)
+            viewModel.selectedMainType.collect { (manufacturer, mainType) ->
+                findNavController().openBuildDateSelection(manufacturer, mainType)
             }
         }
     }.root

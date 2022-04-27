@@ -3,10 +3,12 @@ package com.xiii_lab.carsfilter.builddtates.ui
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.xiii_lab.carsfilter.builddtates.data.BuildDate
 import com.xiii_lab.carsfilter.builddtates.data.BuildDatesRepository
-import com.xiii_lab.carsfilter.navigation.MAIN_TYPE_ID_ARG
-import com.xiii_lab.carsfilter.navigation.MANUFACTURER_ID_ARG
+import com.xiii_lab.carsfilter.navigation.MAIN_TYPE_ARG
+import com.xiii_lab.carsfilter.navigation.MANUFACTURER_ARG
+import com.xiii_lab.carsfilter.remote.builddates.BuildDate
+import com.xiii_lab.carsfilter.remote.maintype.MainType
+import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
@@ -22,16 +24,16 @@ internal class BuildDateViewModelImpl @Inject constructor(
 ) : ViewModel(), BuildDateViewModel {
 
     // TODO: Handle absences of id
-    private val manufacturerId: String = stateHandle[MANUFACTURER_ID_ARG]!!
-    private val mainTypeId: String = stateHandle[MAIN_TYPE_ID_ARG]!!
+    private val manufacturer: Manufacturer = stateHandle[MANUFACTURER_ARG]!!
+    private val mainType: MainType = stateHandle[MAIN_TYPE_ARG]!!
 
-    override val buildDates = buildDatesRepository.getBuildDates(manufacturerId, mainTypeId)
+    override val buildDates = buildDatesRepository.getBuildDates(manufacturer.id, mainType.id)
 
-    override val selectedBuildDate = MutableSharedFlow<Triple<String, String, String>>()
+    override val selectedBuildDate = MutableSharedFlow<Triple<Manufacturer, MainType, BuildDate>>()
 
     override fun onSelected(buildDate: BuildDate) {
         viewModelScope.launch {
-            selectedBuildDate.emit(Triple(manufacturerId, mainTypeId, buildDate.id))
+            selectedBuildDate.emit(Triple(manufacturer, mainType, buildDate))
         }
     }
 }

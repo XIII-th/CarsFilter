@@ -1,6 +1,7 @@
 package com.xiii_lab.carsfilter.maintypes.data
 
 import androidx.paging.PagingData
+import com.xiii_lab.carsfilter.remote.maintype.MainType
 import kotlinx.coroutines.flow.Flow
 
 /**

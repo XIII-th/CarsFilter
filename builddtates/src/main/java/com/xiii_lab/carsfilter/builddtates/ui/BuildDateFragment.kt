@@ -34,8 +34,8 @@ class BuildDateFragment : Fragment() {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.selectedBuildDate.collect { (manufacturerId, mainTypeId, buildDateId) ->
-                findNavController().openSummary(manufacturerId, mainTypeId, buildDateId)
+            viewModel.selectedBuildDate.collect { (manufacturer, mainType, buildDate) ->
+                findNavController().openSummary(manufacturer.name, mainType.name, buildDate.date)
             }
         }
     }.root

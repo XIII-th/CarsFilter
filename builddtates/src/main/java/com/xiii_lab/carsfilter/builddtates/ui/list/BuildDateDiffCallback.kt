@@ -1,7 +1,7 @@
 package com.xiii_lab.carsfilter.builddtates.ui.list
 
 import androidx.recyclerview.widget.DiffUtil
-import com.xiii_lab.carsfilter.builddtates.data.BuildDate
+import com.xiii_lab.carsfilter.remote.builddates.BuildDate
 
 /**
  * Created by XIII-th on 27.04.2022

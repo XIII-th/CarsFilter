@@ -2,6 +2,7 @@ package com.xiii_lab.carsfilter.maintypes.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.xiii_lab.carsfilter.remote.maintype.MainType
 import com.xiii_lab.carsfilter.remote.maintype.MainTypesRemoteDataSource
 
 /**

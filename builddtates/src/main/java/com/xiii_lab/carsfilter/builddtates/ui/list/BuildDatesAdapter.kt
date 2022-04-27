@@ -2,7 +2,7 @@ package com.xiii_lab.carsfilter.builddtates.ui.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.xiii_lab.carsfilter.builddtates.data.BuildDate
+import com.xiii_lab.carsfilter.remote.builddates.BuildDate
 import com.xiii_lab.carsfilter.design.items.SingleLineViewHolder
 
 /**

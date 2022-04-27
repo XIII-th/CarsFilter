@@ -2,6 +2,7 @@ package com.xiii_lab.carsfilter.manufacturer.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 import com.xiii_lab.carsfilter.remote.manufacturer.ManufacturersRemoteDataSource
 import javax.inject.Inject
 
