@@ -8,12 +8,17 @@ import android.view.MenuInflater
 import androidx.appcompat.widget.SearchView
 import com.xiii_lab.carsfilter.design.R
 
-fun createSearchMenu(menu: Menu, inflater: MenuInflater, onQueryChanged: (String) -> Unit) {
+fun SearchViewModel.attachToMenu(menu: Menu, inflater: MenuInflater) {
     inflater.inflate(R.menu.search_menu, menu)
-    with(menu.findItem(R.id.action_search).actionView as SearchView) {
-        setOnQueryTextListener(SearchViewListener(onQueryChanged))
+    val item = menu.findItem(R.id.action_search)
+    with(item.actionView as SearchView) {
+        if (searchQuery.value.isNotEmpty()) {
+            item.expandActionView()
+            setQuery(searchQuery.value, true)
+        }
+        setOnQueryTextListener(SearchViewListener(::onNewSearchQuery))
         setOnCloseListener {
-            onQueryChanged("")
+            onNewSearchQuery("")
             false
         }
     }

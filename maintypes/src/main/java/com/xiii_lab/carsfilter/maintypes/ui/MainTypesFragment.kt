@@ -11,11 +11,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
-import com.xiii_lab.carsfilter.design.search.createSearchMenu
+import com.xiii_lab.carsfilter.design.search.attachToMenu
 import com.xiii_lab.carsfilter.maintypes.ui.list.MainTypeAdapter
 import com.xiii_lab.carsfilter.navigation.openBuildDateSelection
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -51,7 +50,7 @@ internal class MainTypesFragment : Fragment() {
     }.root
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        createSearchMenu(menu, inflater, viewModel::onNewSearchQuery)
+        viewModel.attachToMenu(menu, inflater)
         return super.onCreateOptionsMenu(menu, inflater)
     }
 

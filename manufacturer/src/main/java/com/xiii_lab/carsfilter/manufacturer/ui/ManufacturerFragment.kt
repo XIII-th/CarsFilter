@@ -2,16 +2,18 @@ package com.xiii_lab.carsfilter.manufacturer.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
+import com.xiii_lab.carsfilter.design.search.attachToMenu
 import com.xiii_lab.carsfilter.manufacturer.ui.list.ManufacturerAdapter
 import com.xiii_lab.carsfilter.navigation.openMainTypeSelection
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
@@ -21,6 +23,11 @@ import kotlinx.coroutines.launch
 class ManufacturerFragment : Fragment() {
 
     private val viewModel: ManufacturerViewModel by viewModels<ManufacturerViewModelImpl>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,4 +47,9 @@ class ManufacturerFragment : Fragment() {
             }
         }
     }.root
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        viewModel.attachToMenu(menu, inflater)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 }
