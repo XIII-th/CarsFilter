@@ -7,15 +7,19 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.R
 import com.xiii_lab.carsfilter.databinding.EmptySummaryFragmentBinding
 import com.xiii_lab.carsfilter.databinding.SummaryFragmentBinding
+import com.xiii_lab.carsfilter.design.connectivity.showNoConnectionNotification
 import com.xiii_lab.carsfilter.navigation.openManufacturersSelection
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Created by XIII-th on 24.04.2022
  */
+@AndroidEntryPoint
 internal class SummaryFragment : Fragment() {
 
     private val viewModel: SummaryViewModel by viewModels<SummaryViewModelImpl>()
@@ -31,15 +35,25 @@ internal class SummaryFragment : Fragment() {
                 mainType.text = viewModel.mainType
                 buildDate.text = viewModel.buildDate
                 openFilter.setOnClickListener {
-                    findNavController().openManufacturersSelection()
+                    viewModel.onNewFilterRequested()
                 }
             }
         else
             EmptySummaryFragmentBinding.inflate(inflater, container, false).apply {
                 openFilter.setOnClickListener {
-                    findNavController().openManufacturersSelection()
+                    viewModel.onNewFilterRequested()
                 }
             }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.requestNewFilter.collect {
+                findNavController().openManufacturersSelection()
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.connectivityNotification.collect {
+                binding.root.showNoConnectionNotification()
+            }
+        }
         return binding.root
     }
 
