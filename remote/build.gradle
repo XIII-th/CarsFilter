@@ -23,12 +23,13 @@ android {
             buildConfigField 'String', 'BASE_URL', BASE_URL
             buildConfigField 'String', 'API_KEY', API_KEY
             buildConfigField 'String', 'API_KEY_VALUE', API_VALUE
+            buildConfigField 'String', 'JSON_CONTENT_FIELD', JSON_CONTENT_FIELD
         }
 
         release {
             buildConfigField 'String', 'BASE_URL', BASE_URL
             buildConfigField 'String', 'API_KEY', API_KEY
-            buildConfigField 'String', 'API_VALUE', API_VALUE
+            buildConfigField 'String', 'JSON_CONTENT_FIELD', JSON_CONTENT_FIELD
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
