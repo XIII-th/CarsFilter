@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="no_connection_notification">
+        Application can work only in online. Please, check your internet connection
+    </string>
+    <string name="lost_connection">
+        Your internet connection is unstable. Please, check your internet connection and try again
+    </string>
+
+</resources>

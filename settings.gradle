@@ -16,6 +16,7 @@ rootProject.name = "CarFilter"
 include ':app'
 include ':design'
 include ':navigation'
+include ':environment'
 include ':remote'
 include ':manufacturer'
 include ':maintypes'
