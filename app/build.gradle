@@ -39,6 +39,7 @@ android {
 dependencies {
     implementation project(':design')
     implementation project(':navigation')
+    implementation project(':environment')
     implementation project(':manufacturer')
     implementation project(':maintypes')
     implementation project(':builddtates')

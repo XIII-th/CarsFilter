@@ -2,4 +2,6 @@
 <resources>
     <string name="search_menu">Search</string>
     <string name="retry_button">RETRY</string>
+    <string name="ok_button">OK</string>
+    <string name="no_connection">No connection</string>
 </resources>
