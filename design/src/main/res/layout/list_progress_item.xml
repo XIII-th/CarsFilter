@@ -8,7 +8,9 @@
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
     <Button
         android:id="@+id/retryButton"
@@ -16,6 +18,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/retry_button"
-        tools:visibility="gone" />
+        android:visibility="gone" />
 
 </FrameLayout>

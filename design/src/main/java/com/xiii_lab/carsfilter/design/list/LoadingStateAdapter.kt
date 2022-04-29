@@ -16,4 +16,9 @@ class LoadingStateAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState) =
         LoadingStateItem(parent, onRetry)
+
+    override fun onViewRecycled(holder: LoadingStateItem) {
+        super.onViewRecycled(holder)
+        holder.recycle()
+    }
 }
