@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
+import com.xiii_lab.carsfilter.design.list.LoadingStateAdapter
 import com.xiii_lab.carsfilter.design.search.attachToMenu
 import com.xiii_lab.carsfilter.manufacturer.ui.list.ManufacturerAdapter
 import com.xiii_lab.carsfilter.navigation.openMainTypeSelection
@@ -35,7 +36,7 @@ class ManufacturerFragment : Fragment() {
         savedInstanceState: Bundle?
     ) = ListFragmentBinding.inflate(inflater, container, false).apply {
         val adapter = ManufacturerAdapter(viewModel::onSelected)
-        list.adapter = adapter
+        list.adapter = adapter.withLoadStateFooter(LoadingStateAdapter { adapter.retry() })
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.manufacturers.collect { manufacturers ->
                 adapter.submitData(manufacturers)

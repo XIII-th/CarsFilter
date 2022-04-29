@@ -21,9 +21,9 @@ internal class ManufacturerPagingSource @Inject constructor(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Manufacturer> {
-        try {
+        return try {
             val response = manufacturersRemoteDataSource.getManufacturers(params.key ?: 0)
-            return LoadResult.Page(
+            LoadResult.Page(
                 data = response.manufacturers.entries.map { (id, name) ->
                     Manufacturer(id, name)
                 },
@@ -31,7 +31,7 @@ internal class ManufacturerPagingSource @Inject constructor(
                 nextKey = if (response.page == response.totalPageCount) null else response.page + 1
             )
         } catch (e: Exception) {
-            TODO("Handle exceptions")
+            LoadResult.Error(e)
         }
     }
 }

@@ -2,7 +2,7 @@ package com.xiii_lab.carsfilter.maintypes.ui.list
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import com.xiii_lab.carsfilter.design.items.SingleLineViewHolder
+import com.xiii_lab.carsfilter.design.list.SingleLineViewHolder
 import com.xiii_lab.carsfilter.remote.maintype.MainType
 
 /**

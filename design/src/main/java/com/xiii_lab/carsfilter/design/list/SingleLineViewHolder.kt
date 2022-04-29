@@ -1,4 +1,4 @@
-package com.xiii_lab.carsfilter.design.items
+package com.xiii_lab.carsfilter.design.list
 
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable

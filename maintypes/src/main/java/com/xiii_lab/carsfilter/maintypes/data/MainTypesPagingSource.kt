@@ -21,9 +21,9 @@ internal class MainTypesPagingSource(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MainType> {
-        try {
+        return try {
             val response = mainTypesRemoteDataSource.getMainTypes(manufacturerId, params.key ?: 0)
-            return LoadResult.Page(
+            LoadResult.Page(
                 data = response.mainTypes.entries.map { (id, name) ->
                     MainType(id, name)
                 },
@@ -31,7 +31,7 @@ internal class MainTypesPagingSource(
                 nextKey = if (response.page == response.totalPageCount) null else response.page + 1
             )
         } catch (e: Exception) {
-            TODO("Handle exceptions")
+            LoadResult.Error(e)
         }
     }
 }
