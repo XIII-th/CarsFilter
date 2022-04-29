@@ -14,13 +14,10 @@ internal class BuildDatesAdapter(
     ListAdapter<BuildDate, SingleLineViewHolder<BuildDate>>(BuildDateDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        SingleLineViewHolder(parent, viewType == 1, onSelected)
+        SingleLineViewHolder(parent, onSelected)
 
     override fun onBindViewHolder(holder: SingleLineViewHolder<BuildDate>, position: Int) =
         getItem(position).let { buildDate ->
-            holder.bind(buildDate.date, buildDate)
+            holder.bind(buildDate.date, position % 2 == 1, buildDate)
         }
-
-    override fun getItemViewType(position: Int) =
-        position % 2
 }

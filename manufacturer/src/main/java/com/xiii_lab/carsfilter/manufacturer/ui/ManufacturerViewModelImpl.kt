@@ -31,7 +31,7 @@ internal class ManufacturerViewModelImpl @Inject constructor(
                 pagingData
             else
                 pagingData.filter { manufacturer ->
-                    manufacturer.name.contains(query, false)
+                    manufacturer.name.contains(query, true)
                 }
         }
     }.cachedIn(viewModelScope)

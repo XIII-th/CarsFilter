@@ -15,12 +15,9 @@ internal class ManufacturerAdapter(
 
     override fun onBindViewHolder(holder: SingleLineViewHolder<Manufacturer>, position: Int) =
         getItem(position).let { manufacturer ->
-            holder.bind(manufacturer?.name, manufacturer)
+            holder.bind(manufacturer?.name, position % 2 == 1, manufacturer)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        SingleLineViewHolder(parent, viewType == 1, onSelected)
-
-    override fun getItemViewType(position: Int) =
-        position % 2
+        SingleLineViewHolder(parent, onSelected)
 }

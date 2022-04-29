@@ -15,12 +15,9 @@ internal class MainTypeAdapter(
 
     override fun onBindViewHolder(holder: SingleLineViewHolder<MainType>, position: Int) =
         getItem(position).let { mainType ->
-            holder.bind(mainType?.name, mainType)
+            holder.bind(mainType?.name, position % 2 == 1, mainType)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        SingleLineViewHolder(parent, viewType == 1, onSelected)
-
-    override fun getItemViewType(position: Int) =
-        position % 2
+        SingleLineViewHolder(parent, onSelected)
 }
