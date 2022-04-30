@@ -1,5 +1,6 @@
 package com.xiii_lab.carsfilter.builddtates.ui
 
+import com.xiii_lab.carsfilter.design.list.ListState
 import com.xiii_lab.carsfilter.remote.builddates.BuildDate
 import com.xiii_lab.carsfilter.remote.maintype.MainType
 import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
@@ -14,7 +15,7 @@ internal interface BuildDateViewModel {
 
     val toolbarSubtitle: String
 
-    val buildDates: Flow<List<BuildDate>>
+    val buildDates: Flow<Pair<ListState, List<BuildDate>>>
 
     // TODO: Documentation
     val selectedBuildDate: Flow<Triple<Manufacturer, MainType, BuildDate>>

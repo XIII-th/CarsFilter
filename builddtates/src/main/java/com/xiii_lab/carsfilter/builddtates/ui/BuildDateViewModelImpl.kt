@@ -4,13 +4,15 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xiii_lab.carsfilter.builddtates.data.BuildDatesRepository
+import com.xiii_lab.carsfilter.design.list.ListState
+import com.xiii_lab.carsfilter.environment.connectivity.ConnectivityInfoDataSource
 import com.xiii_lab.carsfilter.navigation.MAIN_TYPE_ARG
 import com.xiii_lab.carsfilter.navigation.MANUFACTURER_ARG
 import com.xiii_lab.carsfilter.remote.builddates.BuildDate
 import com.xiii_lab.carsfilter.remote.maintype.MainType
 import com.xiii_lab.carsfilter.remote.manufacturer.Manufacturer
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 internal class BuildDateViewModelImpl @Inject constructor(
     stateHandle: SavedStateHandle,
+    connectivityInfoDataSource: ConnectivityInfoDataSource,
     buildDatesRepository: BuildDatesRepository
 ) : ViewModel(), BuildDateViewModel {
 
@@ -31,7 +34,18 @@ internal class BuildDateViewModelImpl @Inject constructor(
 
     override val toolbarSubtitle = mainType.name
 
-    override val buildDates = buildDatesRepository.getBuildDates(manufacturer.id, mainType.id)
+    override val buildDates =
+        connectivityInfoDataSource.hasConnection.flatMapLatest { hasConnection ->
+            val flow = if (hasConnection) {
+                buildDatesRepository.getBuildDates(manufacturer.id, mainType.id)
+            } else
+                emptyFlow()
+            flow.onStart {
+                ListState.PROGRESS to emptyList<BuildDate>()
+            }
+        }.map { buildDates ->
+            ListState.DATA to buildDates
+        }
 
     override val selectedBuildDate = MutableSharedFlow<Triple<Manufacturer, MainType, BuildDate>>()
 

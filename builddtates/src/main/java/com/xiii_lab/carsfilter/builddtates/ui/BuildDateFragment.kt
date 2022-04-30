@@ -10,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.builddtates.ui.list.BuildDatesAdapter
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
+import com.xiii_lab.carsfilter.design.list.updateListState
 import com.xiii_lab.carsfilter.navigation.openSummary
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
@@ -30,8 +30,9 @@ class BuildDateFragment : Fragment() {
         val adapter = BuildDatesAdapter(viewModel::onSelected)
         list.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.buildDates.collect { buildDates ->
+            viewModel.buildDates.collect { (state, buildDates) ->
                 adapter.submitList(buildDates)
+                updateListState(state, buildDates.size, "")
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {

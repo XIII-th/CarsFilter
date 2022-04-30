@@ -5,38 +5,53 @@ package com.xiii_lab.carsfilter.design.list
 
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import com.xiii_lab.carsfilter.design.R
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
 
-fun ListFragmentBinding.updateListState(state: CombinedLoadStates, itemCount: Int, query: String) {
-    when (state.refresh) {
-        is LoadState.NotLoading -> if (itemCount == 0)
+fun ListFragmentBinding.updateListState(loadingState: CombinedLoadStates, itemCount: Int, query: String) {
+    val state = when (loadingState.refresh) {
+        LoadState.Loading -> ListState.PROGRESS
+        is LoadState.NotLoading -> ListState.DATA
+        is LoadState.Error -> ListState.ERROR
+    }
+    updateListState(state, itemCount, query)
+}
+
+fun ListFragmentBinding.updateListState(state: ListState, itemCount: Int, query: String) {
+    when (state) {
+        ListState.DATA -> if (itemCount == 0)
             if (query.isEmpty())
-                onNoData(ListState.Placeholder.NoData)
+                onNoData(R.drawable.ic_baseline_filter_none_24, R.string.no_data)
             else
-                onNoData(ListState.Placeholder.DataNotFound)
+                onNoData(R.drawable.ic_baseline_search_24, R.string.no_data_found)
         else
             onDataLoaded()
-        LoadState.Loading -> onProgress()
-        is LoadState.Error -> if (itemCount == 0)
+        ListState.PROGRESS -> onProgress()
+        ListState.ERROR -> if (itemCount == 0)
             if (query.isNotEmpty())
-                onNoData(ListState.Placeholder.DataNotFound)
+                onNoData(R.drawable.ic_baseline_search_24, R.string.no_data_found)
             else
-                onNoData(ListState.Placeholder.NoData)
+                onNoData(R.drawable.ic_baseline_filter_none_24, R.string.no_data)
         else
-            // if something loaded, let user work with it + log error
+            // if something loaded, let user work with it + log error (not implemented)
             onDataLoaded()
     }
 }
 
-private fun ListFragmentBinding.onNoData(state: ListState.Placeholder) {
+private fun ListFragmentBinding.onNoData(
+    @DrawableRes iconRes: Int,
+    @StringRes commentRes: Int
+) {
     progress.visibility = GONE
     list.visibility = GONE
     placeholder.apply {
         root.visibility = VISIBLE
-        placeholderImage.setImageResource(state.iconRes)
-        placeholderComment.setText(state.commentRes)
+        placeholderImage.setImageResource(iconRes)
+        placeholderComment.setText(commentRes)
     }
 }
 

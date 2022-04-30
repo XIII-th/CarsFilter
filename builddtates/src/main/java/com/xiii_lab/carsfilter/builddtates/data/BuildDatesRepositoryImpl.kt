@@ -13,12 +13,15 @@ internal class BuildDatesRepositoryImpl @Inject constructor(
 ) : BuildDatesRepository {
 
     override fun getBuildDates(manufacturerId: String, mainTypeId: String) = flow {
-        val dates = buildDatesRemoteDataSource.getBuildDates(manufacturerId, mainTypeId)
-            .buildDates.entries.map { (id, date) ->
-                BuildDate(id, date)
-            }
+        val dates = try {
+            buildDatesRemoteDataSource.getBuildDates(manufacturerId, mainTypeId)
+                .buildDates.entries.map { (id, date) ->
+                    BuildDate(id, date)
+                }
+        } catch (e: Exception) {
+            emptyList()
+        }
         emit(dates)
-        // TODO: Handle errors
     }
     // TODO: .cachedIn()
 }
