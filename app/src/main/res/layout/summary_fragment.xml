@@ -34,7 +34,7 @@
         android:id="@+id/mainTypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/summary_vertical_padding"
+        android:layout_marginTop="@dimen/vertical_margin"
         android:text="@string/main_type"
         android:textAppearance="?textAppearanceOverline"
         app:layout_constraintBottom_toTopOf="@id/mainType"
@@ -57,13 +57,13 @@
         android:id="@+id/buildDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vertical_margin"
         android:text="@string/build_date"
-        android:paddingTop="@dimen/summary_vertical_padding"
         android:textAppearance="?textAppearanceOverline"
         app:layout_constraintBottom_toTopOf="@id/buildDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainType"/>
+        app:layout_constraintTop_toBottomOf="@id/mainType" />
 
     <TextView
         android:id="@+id/buildDate"

@@ -9,7 +9,13 @@ class SearchViewModelDelegate: SearchViewModel {
 
     override val searchQuery = MutableStateFlow("")
 
+    override val searchEnabled = MutableStateFlow(true)
+
     override fun onNewSearchQuery(query: String) {
         searchQuery.value = query.trim()
+    }
+
+    suspend fun setSearchEnabled(isEnabled: Boolean) {
+        searchEnabled.emit(isEnabled)
     }
 }

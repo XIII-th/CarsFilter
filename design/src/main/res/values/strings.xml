@@ -11,4 +11,8 @@
     <string name="lost_connection">
         Your internet connection is unstable. Please, check your internet connection and try again
     </string>
+
+    <string name="common_error">Something went wrong.\nPlease, try again</string>
+    <string name="no_data">No data</string>
+    <string name="no_data_found">No data found</string>
 </resources>
