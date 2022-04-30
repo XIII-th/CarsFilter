@@ -29,7 +29,6 @@ internal class MainTypesViewModelImpl @Inject constructor(
     mainTypesRepository: MainTypesRepository
 ) : ViewModel(), MainTypesViewModel, SearchViewModel by SearchViewModelDelegate() {
 
-    // TODO: Handle absences of id
     private val manufacturer: Manufacturer = stateHandle[MANUFACTURER_ARG]!!
 
     override val toolbarTitle = manufacturer.name

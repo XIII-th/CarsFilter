@@ -26,7 +26,6 @@ internal class BuildDateViewModelImpl @Inject constructor(
     buildDatesRepository: BuildDatesRepository
 ) : ViewModel(), BuildDateViewModel {
 
-    // TODO: Handle absences of id
     private val manufacturer: Manufacturer = stateHandle[MANUFACTURER_ARG]!!
     private val mainType: MainType = stateHandle[MAIN_TYPE_ARG]!!
 

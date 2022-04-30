@@ -1,5 +1,6 @@
 package com.xiii_lab.carsfilter.remote.manufacturer
 
+import com.xiii_lab.carsfilter.remote.PAGE_SIZE
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,8 +11,4 @@ interface ManufacturersRemoteDataSource {
 
     @GET("v1/car-types/manufacturer?pageSize=$PAGE_SIZE")
     suspend fun getManufacturers(@Query("page") page: Int): ManufacturersPage
-
-    companion object {
-        const val PAGE_SIZE = 15
-    }
 }

@@ -1,5 +1,6 @@
 package com.xiii_lab.carsfilter.remote.maintype
 
+import com.xiii_lab.carsfilter.remote.PAGE_SIZE
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -8,8 +9,8 @@ import retrofit2.http.Query
  */
 interface MainTypesRemoteDataSource {
 
-    // TODO: Check paging support
-    @GET("v1/car-types/main-types")
+    // backend supports paging for main types, so data source supports as well
+    @GET("v1/car-types/main-types?pageSize=$PAGE_SIZE")
     suspend fun getMainTypes(
         @Query("manufacturer") manufacturerId: String,
         @Query("page") page: Int
