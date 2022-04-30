@@ -18,5 +18,4 @@ internal class ManufacturersRepositoryImpl @Inject constructor(
     override val manufacturers: Flow<PagingData<Manufacturer>> = Pager(PagingConfig(PAGE_SIZE)) {
         pagingSource
     }.flow
-        // TODO: .cachedIn()
 }

@@ -45,7 +45,7 @@ internal class BuildDateViewModelImpl @Inject constructor(
             }
         }.map { buildDates ->
             ListState.DATA to buildDates
-        }
+        }.shareIn(viewModelScope, SharingStarted.Lazily, 1)
 
     override val selectedBuildDate = MutableSharedFlow<Triple<Manufacturer, MainType, BuildDate>>()
 

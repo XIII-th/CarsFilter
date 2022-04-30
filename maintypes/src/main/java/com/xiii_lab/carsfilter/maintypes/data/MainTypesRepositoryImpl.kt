@@ -24,5 +24,4 @@ internal class MainTypesRepositoryImpl(
     ) {
         createPagingSourceFactory.create(manufacturerId)
     }.flow
-    // TODO: .cachedIn()
 }
