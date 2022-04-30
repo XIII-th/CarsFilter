@@ -16,7 +16,6 @@ internal interface MainTypesViewModel : SearchViewModel {
 
     val mainTypes: Flow<PagingData<MainType>>
 
-    // TODO: Documentation
     val selectedMainType: Flow<Pair<Manufacturer, MainType>>
 
     val reload: MutableSharedFlow<Unit>

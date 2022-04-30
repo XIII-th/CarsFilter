@@ -17,7 +17,6 @@ internal interface BuildDateViewModel {
 
     val buildDates: Flow<Pair<ListState, List<BuildDate>>>
 
-    // TODO: Documentation
     val selectedBuildDate: Flow<Triple<Manufacturer, MainType, BuildDate>>
 
     fun onSelected(buildDate: BuildDate)

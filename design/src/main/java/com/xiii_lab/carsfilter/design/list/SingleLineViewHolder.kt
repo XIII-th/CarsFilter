@@ -13,7 +13,6 @@ import com.xiii_lab.carsfilter.design.databinding.ListItemBinding
 
 /**
  * Created by XIII-th on 25.04.2022
- * TODO Documentation
  */
 class SingleLineViewHolder<in T> private constructor(
     private val textView: TextView,
