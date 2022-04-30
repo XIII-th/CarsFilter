@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.xiii_lab.carsfilter.design.databinding.ListFragmentBinding
 import com.xiii_lab.carsfilter.design.list.LoadingStateAdapter
+import com.xiii_lab.carsfilter.design.list.updateListState
 import com.xiii_lab.carsfilter.design.search.attachToMenu
 import com.xiii_lab.carsfilter.maintypes.ui.list.MainTypeAdapter
 import com.xiii_lab.carsfilter.navigation.openBuildDateSelection
@@ -41,6 +42,16 @@ internal class MainTypesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.mainTypes.collect { manufacturers ->
                 adapter.submitData(manufacturers)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            adapter.loadStateFlow.collect { state ->
+                updateListState(state, adapter.itemCount, viewModel.searchQuery.value)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.reload.collect {
+                adapter.retry()
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {

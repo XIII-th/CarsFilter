@@ -22,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 internal class ManufacturerViewModelImpl @Inject constructor(
     repository: ManufacturersRepository,
-    private val connectivityInfoDataSource: ConnectivityInfoDataSource
+    connectivityInfoDataSource: ConnectivityInfoDataSource
 ) : ViewModel(),
     ManufacturerViewModel,
     SearchViewModel by SearchViewModelDelegate() {

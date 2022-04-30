@@ -7,6 +7,7 @@ import androidx.paging.cachedIn
 import androidx.paging.filter
 import com.xiii_lab.carsfilter.design.search.SearchViewModel
 import com.xiii_lab.carsfilter.design.search.SearchViewModelDelegate
+import com.xiii_lab.carsfilter.environment.connectivity.ConnectivityInfoDataSource
 import com.xiii_lab.carsfilter.maintypes.data.MainTypesRepository
 import com.xiii_lab.carsfilter.navigation.MANUFACTURER_ARG
 import com.xiii_lab.carsfilter.remote.maintype.MainType
@@ -24,6 +25,7 @@ import javax.inject.Inject
 @HiltViewModel
 internal class MainTypesViewModelImpl @Inject constructor(
     stateHandle: SavedStateHandle,
+    connectivityInfoDataSource: ConnectivityInfoDataSource,
     mainTypesRepository: MainTypesRepository
 ) : ViewModel(), MainTypesViewModel, SearchViewModel by SearchViewModelDelegate() {
 
@@ -45,6 +47,17 @@ internal class MainTypesViewModelImpl @Inject constructor(
     }.cachedIn(viewModelScope)
 
     override val selectedMainType = MutableSharedFlow<Pair<Manufacturer, MainType>>()
+
+    override val reload = MutableSharedFlow<Unit>()
+
+    init {
+        viewModelScope.launch {
+            connectivityInfoDataSource.hasConnection.collect { hasConnection ->
+                if (hasConnection)
+                    reload.emit(Unit)
+            }
+        }
+    }
 
     override fun onSelected(mainType: MainType) {
         viewModelScope.launch {

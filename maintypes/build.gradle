@@ -37,6 +37,7 @@ android {
 dependencies {
     implementation project(':design')
     implementation project(':navigation')
+    implementation project(':environment')
     implementation project(':remote')
 
     implementation 'com.google.android.material:material:1.5.0'

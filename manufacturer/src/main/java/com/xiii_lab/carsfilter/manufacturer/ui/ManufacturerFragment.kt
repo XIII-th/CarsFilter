@@ -49,13 +49,13 @@ class ManufacturerFragment : Fragment() {
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.selectedManufacturer.collect { manufacturer ->
-                findNavController().openMainTypeSelection(manufacturer)
+            viewModel.reload.collect {
+                adapter.retry()
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.reload.collect {
-                adapter.retry()
+            viewModel.selectedManufacturer.collect { manufacturer ->
+                findNavController().openMainTypeSelection(manufacturer)
             }
         }
     }.root
