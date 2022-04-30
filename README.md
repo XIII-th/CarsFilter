@@ -48,4 +48,4 @@ data class ManufacturersPage(
 
 ## 📝 TODO list
 - Implement caching of filters lists into local database 
-- Provide test coverage
+- Provide unit test with a coverage
