@@ -1,6 +1,5 @@
 package com.xiii_lab.carsfilter.design.search
 
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 /**
@@ -9,8 +8,6 @@ import kotlinx.coroutines.flow.StateFlow
 interface SearchViewModel {
 
     val searchQuery: StateFlow<String>
-
-    val searchEnabled: MutableStateFlow<Boolean>
 
     fun onNewSearchQuery(query: String)
 }
